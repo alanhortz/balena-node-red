@@ -7,9 +7,12 @@ WORKDIR /usr/src/app
 COPY ./app/package.json package.json
 COPY ./app/package-lock.json package-lock.json
 
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+  build-essential \
+  python3 \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 RUN JOBS=MAX npm install -g --production --unsafe-perm \
-      build-essential \
-      python3 \
       node-red \
       node-red-contrib-balena \
     && JOBS=MAX npm install --unsafe-perm --production && npm cache clean --force
