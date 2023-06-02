@@ -15,4 +15,4 @@ mkdir -p /data/node-red/user/lib/flows || true
 cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 
 # Start node-red
-modprobe i2c-dev && node-red --settings /usr/src/app/settings.js
+node-red --settings /usr/src/app/settings.js
